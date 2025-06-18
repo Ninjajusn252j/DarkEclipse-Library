@@ -1,4 +1,4 @@
-# 🚀 Mi Librería de UI Minimalista para Delta
+# 🚀 Mi Librería de UI Minimalista para Scripts de roblox
 
 Una librería de UI ligera y fácil de usar para scripts de Roblox ejecutados con exploits como Delta. Diseñada para ser **minimalista**, **limpia** y **completamente funcional**, permitiéndote crear interfaces de usuario atractivas con poco esfuerzo.
 
