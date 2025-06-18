@@ -70,12 +70,12 @@ UI.Window = function(title, size, position)
     })
 
     if UI.Config.WindowDraggable then
-        local dragging = false
+        local dragging = true
         local dragOffset = Vector2.new()
 
         titleBar.InputBegan:Connect(function(input)
             if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-                dragging = true
+                dragging = false
                 dragOffset = input.Position - frame.AbsolutePosition
             end
         end)
