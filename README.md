@@ -1,47 +1,44 @@
-# 🚀 Mi Librería de UI Minimalista para Scripts de roblox
+# 🚀 Orion Library
 
-Una librería de UI ligera y fácil de usar para scripts de Roblox ejecutados con exploits como Delta. Diseñada para ser **minimalista**, **limpia** y **completamente funcional**, permitiéndote crear interfaces de usuario atractivas con poco esfuerzo.
-
----
-
-## ✨ Características
-
-* **Minimalista:** Estilo moderno y limpio con un enfoque en la simplicidad.
-* **Fácil de Usar:** API intuitiva para crear componentes de UI rápidamente.
-* **Completa:** Incluye los componentes esenciales (ventanas, botones, entradas, etc.) para construir cualquier UI.
-* **Personalizable:** Adapta la apariencia global con una simple configuración.
-* **Arrastrable:** Las ventanas se pueden mover por la pantalla (configurable).
+This documentation is for the stable release of Orion Library, a powerful and minimalist UI solution designed to streamline the creation of user interfaces for Roblox exploits like Delta.
 
 ---
 
-## 🛠️ Cómo Usar
+## ✨ Features
 
-### 1. Importa la Librería
+* **Minimalist Design:** Modern and clean aesthetics with a focus on simplicity.
+* **Easy to Use:** Intuitive API for rapid UI component creation.
+* **Comprehensive:** Includes all essential components (windows, buttons, inputs, etc.) to build any UI.
+* **Customizable:** Adapt the global look and feel with simple configuration options.
+* **Draggable Windows:** User interfaces can be easily repositioned on screen (configurable).
 
-Para usar esta librería en tu script de Delta (o cualquier exploit compatible con `game.HttpGet` y `loadstring`), simplemente copia y pega este código. La librería se cargará directamente desde tu repositorio de GitHub.
+---
 
-**Importante:** La librería se importa y la tabla API (`UI`) se devuelve para ser utilizada en tu script. **No se crea una variable global**, lo que ayuda a mantener tu código más limpio y evitar conflictos.
+## 🛠️ How to Use
+
+### 1. Booting the Library
+
+To use Orion Library, you need to load it into your script. This process uses `game:HttpGet` to fetch the library's code from the specified URL and `loadstring` to execute it safely within your script environment.
+
+**Important:** The library is loaded and its API table (`OrionLib`) is returned for direct use in your script. It **does not create a global variable**, which helps keep your codebase cleaner and prevents naming conflicts.
 
 ```lua
--- URL de tu librería en GitHub (¡No la cambies, ya está configurada!)
-local urlDeMiLibreria = "[https://raw.githubusercontent.com/Ninjajusn252j/DarkEclipse-Library/refs/heads/main/Source.lua](https://raw.githubusercontent.com/Ninjajusn252j/DarkEclipse-Library/refs/heads/main/Source.lua)" 
+-- URL of the Orion Library on GitHub (this is pre-configured, no changes needed!)
+local OrionLibUrl = "[https://raw.githubusercontent.com/Ninjajusn252j/DarkEclipse-Library/refs/heads/main/Source.lua](https://raw.githubusercontent.com/Ninjajusn252j/DarkEclipse-Library/refs/heads/main/Source.lua)" 
 
-local success, response = pcall(game.HttpGet, game, urlDeMiLibreria)
+local success, response = pcall(game.HttpGet, game, OrionLibUrl)
 
 if success and response then
     local compiledCode = loadstring(response)
     if compiledCode then
-        local UI = compiledCode() -- ¡'UI' es la tabla que contiene todas las funciones de tu librería!
+        local OrionLib = compiledCode() -- 'OrionLib' now holds the entire library API!
         
-        -- Ejemplo básico:
-        local miVentana = UI.Window("Mi Primera UI", UDim2.new(0, 400, 0, 300))
-        UI.Button(miVentana.Content, "¡Haz Clic!", function()
-            print("¡Botón presionado!")
-        end)
-
+        -- You can now start building your UI!
+        local myWindow = OrionLib:MakeWindow({Name = "My First UI"})
+        -- ... add components to your window
     else
-        warn("Error: No se pudo compilar el código de la librería. Asegúrate de que el archivo Source.lua no tenga errores de sintaxis.")
+        warn("Error: Failed to compile the library code. Ensure Source.lua does not have syntax errors.")
     end
 else
-    warn("Error: No se pudo descargar la librería. Revisa tu conexión a internet o la disponibilidad del repositorio.")
+    warn("Error: Failed to download the library. Check your internet connection or repository availability.")
 end
