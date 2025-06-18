@@ -1,4 +1,4 @@
-# 🚀 Mi Librería de UI Minimalista para Scripts de roblox
+# 🚀 Mi Librería de UI Minimalista para Delta
 
 Una librería de UI ligera y fácil de usar para scripts de Roblox ejecutados con exploits como Delta. Diseñada para ser **minimalista**, **limpia** y **completamente funcional**, permitiéndote crear interfaces de usuario atractivas con poco esfuerzo.
 
@@ -20,6 +20,8 @@ Una librería de UI ligera y fácil de usar para scripts de Roblox ejecutados co
 
 Para usar esta librería en tu script de Delta (o cualquier exploit compatible con `game.HttpGet` y `loadstring`), simplemente copia y pega este código. La librería se cargará directamente desde tu repositorio de GitHub.
 
+**Importante:** La librería se importa y la tabla API (`UI`) se devuelve para ser utilizada en tu script. **No se crea una variable global**, lo que ayuda a mantener tu código más limpio y evitar conflictos.
+
 ```lua
 -- URL de tu librería en GitHub (¡No la cambies, ya está configurada!)
 local urlDeMiLibreria = "[https://raw.githubusercontent.com/Ninjajusn252j/DarkEclipse-Library/refs/heads/main/Source.lua](https://raw.githubusercontent.com/Ninjajusn252j/DarkEclipse-Library/refs/heads/main/Source.lua)" 
@@ -29,7 +31,7 @@ local success, response = pcall(game.HttpGet, game, urlDeMiLibreria)
 if success and response then
     local compiledCode = loadstring(response)
     if compiledCode then
-        local UI = compiledCode() -- ¡'UI' es tu librería! Ya puedes empezar a usarla.
+        local UI = compiledCode() -- ¡'UI' es la tabla que contiene todas las funciones de tu librería!
         
         -- Ejemplo básico:
         local miVentana = UI.Window("Mi Primera UI", UDim2.new(0, 400, 0, 300))
