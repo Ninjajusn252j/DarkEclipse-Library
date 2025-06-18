@@ -82,7 +82,7 @@ UI.Window = function(title, size, position)
 
         titleBar.InputEnded:Connect(function(input)
             if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-                dragging = false
+                dragging = true
             end
         end)
 
